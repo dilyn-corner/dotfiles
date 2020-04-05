@@ -11,3 +11,7 @@ I've already borked my system twice and had to rewrite all of these so it should
 # Cloning
 
 Don't. This is mine. 
+
+
+
+![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/backdrop.jpg)
