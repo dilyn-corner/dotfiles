@@ -1,0 +1,4 @@
+R_HOME_USER = ~/.R
+R_HISTFILE = ~/.r_history
+R_LIBS_USER = ~/.R/library
+R_PROFILE_USER = ~/.Rprofile
