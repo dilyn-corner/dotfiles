@@ -10,7 +10,7 @@ alias ix="curl -F 'f:1=<-' ix.io"
 alias dotties='/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}'
 
 ## ksh (current)
-PS1='${PWD} ~> '
+PS1='${PWD} -> '
 export HISTFILE=/home/dilyn/.ksh_history
 
 # Scrollback with arrow keys
