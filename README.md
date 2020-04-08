@@ -14,4 +14,4 @@ Don't. This is mine.
 
 
 
-![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/backdrop.jpg)
+![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/README-img.jpg)
