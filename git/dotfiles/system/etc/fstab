@@ -1,0 +1,17 @@
+# <device>					<mount> 	<type> 		<options> 	<dump> <fsck>
+# /dev/nvme0n1p3 LABEL=KISSroot
+UUID=ec1a0e34-d9c1-4481-9289-87e17958b64c	/         	ext4      	rw,noatime	0 	2
+# /dev/nvme0n1p1 LABEL=Boot
+UUID=5919-0AE0      				/boot     	vfat      	rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro	0 0
+# /dev/nvme0n1p4 LABEL=KISShome
+UUID=044d4743-cab8-4eac-9234-182356c6765e	/home     	ext4      	rw,noatime	0 	1
+# /dev/nvme0n1p2 LABEL=Swap
+UUID=6a341b10-c91d-421d-9bee-5cb950d9464a	none      	swap      	defaults  	0 	0
+
+# Psuedo Filesystems
+#devtmpfs            				/dev      	devtmpfs  	rw,size=4027804k,nr_inodes=1006951,mode=755	0 0
+#devpts              				/dev/pts  	devpts    	rw,nosuid,noexec,gid=5,mode=620,ptmxmode=000	0 0
+#shm                 				/dev/shm  	tmpfs     	rw,nosuid,nodev					0 0
+#proc                				/proc     	proc      	rw,nosuid,nodev,noexec				0 0
+#sys                 				/sys      	sysfs     	rw,nosuid,nodev,noexec				0 0
+#run                 				/run      	tmpfs     	rw,nosuid,nodev,mode=755			0 0
