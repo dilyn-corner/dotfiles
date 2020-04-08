@@ -34,15 +34,25 @@ call plug#end()
  	colorscheme wal
 
 
-" Disable those fucking arrow keys
-	no <down> <Nop>
-	no <up> <Nop>
-	no <right> <Nop>
-	no <left> <Nop>
-	ino <down> <Nop>
-	ino <up> <Nop>
-	ino <left> <Nop>
-	ino <right> <Nop>
+" Keymaps
+"" Set the leader key
+let mapleader=","
+"" Unset last search pattern (remove highlighting)
+nnoremap <silent> <esc> :noh<return><esc>
+"" More natural split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+"" Disable those fucking arrow keys
+no <down> <Nop>
+no <up> <Nop>
+no <right> <Nop>
+no <left> <Nop>
+ino <down> <Nop>
+ino <up> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
 
 
 " For vim-airline
@@ -75,17 +85,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use `[c` and `]c` to navigate diagnostics
+"" Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
+"" Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
+"" Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -96,7 +106,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
+"" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
