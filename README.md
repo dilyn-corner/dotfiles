@@ -30,4 +30,8 @@ dotties config status.showUntrackedFiles no
 dotties remote set-url origin https://github.com/dilyn-corner/dotfiles
 ```
 
+# A view
+
+Because I need to remind you why this exists.
+
 ![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/README-img.jpg)
