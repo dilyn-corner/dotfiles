@@ -7,6 +7,7 @@
 alias github="pash c github.com/dilyn-corner"
 alias email="pash c tutanota.com/dilyn.corner"
 alias ix="curl -F 'f:1=<-' ix.io"
+alias dotties='/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}'
 
 ## ksh (current)
 PS1='${PWD} ~> '
@@ -25,4 +26,3 @@ alias __Y=`echo "\005"`     # end = ^e = end of line
 
 ## bash, ash
 #PS1="\w ~> "
-alias dotties='/usr/bin/git --git-dir=/home/dilyn/.dotfiles/ --work-tree=/home/dilyn'
