@@ -6,14 +6,13 @@
  
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" Some basics:
-	set guifont=Iosevka\ Nerd\ Font\ Complete\ Mono
  	set number relativenumber  " Relative line numbers
 	set clipboard+=unnamedplus " Clipboard instead of registers
 	set incsearch              " Incremental search
@@ -34,7 +33,7 @@ call plug#end()
 
  	colorscheme wal
 
-    
+
 " Disable those fucking arrow keys
 	no <down> <Nop>
 	no <up> <Nop>
@@ -57,6 +56,8 @@ let g:webdevicons_enable_airline_statusline = 1
 " For CoC
 "" Apparently important settings
     set hidden          " TextEdit might fail without this
+    set nobackup        " Some servers cry with 
+    set nowritebackup   " backups enabled
     set cmdheight=2     " More height for display messages
     set updatetime=300  " 300ms inactive -> swap file is written
     set shortmess+=c    " Don't pass messages to |ins-completion-menu|
@@ -74,7 +75,28 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Highlight symbol and reference 
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-set statusline^=%{coc#status()}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
