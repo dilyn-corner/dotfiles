@@ -2,7 +2,6 @@
 # This has become a generic shrc file; comments will specify sh specifics.
 
 (cat ~/.cache/wal/sequences &)
-. ~/.cache/wal/colors-tty.sh
 
 alias github="pash c github.com/dilyn-corner"
 alias email="pash c tutanota.com/dilyn.corner"
@@ -21,8 +20,3 @@ alias __C=`echo "\006"`     # right arrow = ^f = forward a character
 alias __D=`echo "\002"`     # left arrow = ^b = back a character
 alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
-
-
-
-## bash, ash
-#PS1="\w ~> "
