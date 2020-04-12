@@ -13,6 +13,7 @@ export BLIS_NUM_THREADS="4"
 export PF_INFO="title os host kernel uptime pkgs memory palette"
 export PASH_KEYID=dilyn.corner@tutanota.com
 export PASH_DIR=/home/dilyn/git/pass-store
+export PASH_LENGTH=25
 export PASH_TIMEOUT=60
 
 # Sane default programs
