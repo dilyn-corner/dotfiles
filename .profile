@@ -7,7 +7,7 @@ export LDFLAGS=" "
 # Sane default environment variables
 export ENV=/home/dilyn/.shrc
 export PATH="/home/dilyn/.local/bin:$PATH"
-export KISS_PATH=/home/dilyn/git/KISS-me:$KISS_PATH:/home/dilyn/git/community/community
+export KISS_PATH="/home/dilyn/git/KISS-me:$KISS_PATH:/home/dilyn/git/community/community"
 export KISS_COMPRESS=xz
 export BLIS_NUM_THREADS="4"
 export PF_INFO="title os host kernel uptime pkgs memory palette"
