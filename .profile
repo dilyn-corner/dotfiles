@@ -6,7 +6,7 @@ export LDFLAGS=" "
 
 # Sane default environment variables
 export ENV=/home/dilyn/.shrc
-export PATH="/home/dilyn/.local/bin:$PATH"
+export PATH="/usr/lib/ccache/bin:/home/dilyn/.local/bin:$PATH"
 export KISS_PATH="/home/dilyn/git/KISS-me:$KISS_PATH:/home/dilyn/git/community/community"
 export KISS_COMPRESS=xz
 export BLIS_NUM_THREADS="4"
