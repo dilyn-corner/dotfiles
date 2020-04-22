@@ -1,2 +1,0 @@
-# Set deadline scheduler for SSDs
-ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="nvme*", RUN+="/bin/sh -c 'echo kyber > /sys/block/nvme0n1/queue/scheduler"
