@@ -45,10 +45,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "" Disable those fucking arrow keys
-no <down> <Nop>
-no <up> <Nop>
-no <right> <Nop>
-no <left> <Nop>
+nno <down> <Nop>
+nno <up> <Nop>
+nno <right> <Nop>
+nno <left> <Nop>
 ino <down> <Nop>
 ino <up> <Nop>
 ino <left> <Nop>
