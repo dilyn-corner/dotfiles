@@ -1,12 +1,7 @@
-" __   _(_)_ __ ___  _ __ ___
-" \ \ / / | '_ ` _ \| '__/ __|
-"  \ V /| | | | | | | | | (__
-"   \_/ |_|_| |_| |_|_|  \___|
-
- 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
@@ -14,25 +9,24 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" Some basics:
- 	set number relativenumber  " Relative line numbers
-	set clipboard+=unnamedplus " Clipboard instead of registers
-	set incsearch              " Incremental search
-	set hlsearch               " Highlight results
+    set number relativenumber  " Relative line numbers
+    set clipboard+=unnamedplus " Clipboard instead of registers
+    set incsearch              " Incremental search
+    set hlsearch               " Highlight results
     filetype plugin on         " Autodetect filetype
     syntax on                  " Built-in syntax highlighting
-	set showmatch              " Briefly highlight matching bracket
-	set showcmd                " Show commands as they come
-	set breakindent            " Line wraps maintain indent
-	set tabstop=4              " Tabs are 4 spaces
-	set shiftwidth=4           " Set indentation column width
-	set scrolloff=3            " Minimum lines to show above/below 
-	set sidescrolloff=5        " Minimum columns to show left/right 
-	set nostartofline          " Maintain cursor position for commands
-	set expandtab              " Tabs are expanded into spaces
-	set splitbelow             " Windows split down
-	set splitright             " Windows split right
-
- 	colorscheme wal
+    set showmatch              " Briefly highlight matching bracket
+    set showcmd                " Show commands as they come
+    set breakindent            " Line wraps maintain indent
+    set tabstop=4              " Tabs are 4 spaces
+    set shiftwidth=4           " Set indentation column width
+    set scrolloff=3            " Minimum lines to show above/below
+    set sidescrolloff=5        " Minimum columns to show left/right
+    set nostartofline          " Maintain cursor position for commands
+    set expandtab              " Tabs are expanded into spaces
+    set splitbelow             " Windows split down
+    set splitright             " Windows split right
+    colorscheme wal            " Define the colorscheme
 
 
 " Keymaps
@@ -67,7 +61,7 @@ let g:webdevicons_enable_airline_statusline = 1
 " For CoC
 "" Apparently important settings
     set hidden          " TextEdit might fail without this
-    set nobackup        " Some servers cry with 
+    set nobackup        " Some servers cry with
     set nowritebackup   " backups enabled
     set cmdheight=2     " More height for display messages
     set updatetime=300  " 300ms inactive -> swap file is written
@@ -111,17 +105,18 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
-" Vim Gitgutter 
+" Vim Gitgutter
 "" Create a hunk summary for the statusline
 function! GitStatus()
     let [a,m,r] = GitGutterGetHunkSummary()
     return printf('+%d ~%d -%d', a, m, r)
 endfunction
 
-"" Next/Previous hunk 
+"" Next/Previous hunk
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
 " Statusline
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
 set statusline+=%{GitStatus()}
+set statusline+=%{FugitiveStatusLine()}
