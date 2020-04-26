@@ -5,8 +5,9 @@
 
  
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -86,8 +87,8 @@ function! s:check_back_space() abort
 endfunction
 
 "" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 "" Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -109,4 +110,18 @@ endfunction
 "" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Vim Gitgutter 
+"" Create a hunk summary for the statusline
+function! GitStatus()
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', a, m, r)
+endfunction
+
+"" Next/Previous hunk 
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+" Statusline
+set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline+=%{GitStatus()}
