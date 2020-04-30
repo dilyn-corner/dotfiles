@@ -1,5 +1,5 @@
 # Sane default build variables
-export CFLAGS="-march=native -mtune=native -pipe -O3"
+export CFLAGS="-march=native -mtune=native -pipe -O3 -ffast-math"
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j4"
 export LDFLAGS=" "
