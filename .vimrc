@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'dylanaraps/fff.vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
@@ -9,25 +10,25 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" Some basics:
+    filetype plugin on         " Autodetect filetype
+    syntax on                  " Built-in syntax highlighting
     set number relativenumber  " Relative line numbers
     set clipboard+=unnamedplus " Clipboard instead of registers
     set incsearch              " Incremental search
     set hlsearch               " Highlight results
-    filetype plugin on         " Autodetect filetype
-    syntax on                  " Built-in syntax highlighting
     set showmatch              " Briefly highlight matching bracket
     set showcmd                " Show commands as they come
     set breakindent            " Line wraps maintain indent
     set tabstop=4              " Tabs are 4 spaces
     set shiftwidth=4           " Set indentation column width
+    set expandtab              " Tabs are expanded into spaces
     set scrolloff=3            " Minimum lines to show above/below
     set sidescrolloff=5        " Minimum columns to show left/right
     set nostartofline          " Maintain cursor position for commands
-    set expandtab              " Tabs are expanded into spaces
     set splitbelow             " Windows split down
     set splitright             " Windows split right
-    colorscheme wal            " Define the colorscheme
 
+    colorscheme wal
 
 " Keymaps
 "" Set the leader key
@@ -48,14 +49,6 @@ ino <down> <Nop>
 ino <up> <Nop>
 ino <left> <Nop>
 ino <right> <Nop>
-
-
-" For vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
 
 
 " For CoC
@@ -115,6 +108,22 @@ endfunction
 "" Next/Previous hunk
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+
+
+" fff
+"" hotkey, split size, split direction
+nnoremap f :F<CR>
+let g:fff#split = "25vnew"
+let g:fff#split_direction = "nosplitbelow nosplitright"
+
+
+" For vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+
 
 " Statusline
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
