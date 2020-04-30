@@ -1,7 +1,7 @@
 #!/bin/sh
 # This has become a generic shrc file; comments will specify sh specifics.
 
-(cat ~/.cache/wal/sequences &)
+(paleta -r &)
 
 alias github="pash c github.com/dilyn-corner"
 alias email="pash c tutanota.com/dilyn.corner"
