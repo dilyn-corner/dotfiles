@@ -1,5 +1,11 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'dylanaraps/fff.vim'
@@ -10,8 +16,6 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" Some basics:
-    filetype plugin on         " Autodetect filetype
-    syntax on                  " Built-in syntax highlighting
     set number relativenumber  " Relative line numbers
     set clipboard+=unnamedplus " Clipboard instead of registers
     set incsearch              " Incremental search
