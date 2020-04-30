@@ -8,13 +8,14 @@ export LDFLAGS=" "
 export ENV=/home/dilyn/.shrc
 export PATH="/usr/lib/ccache/bin:/home/dilyn/.local/bin:$PATH"
 export KISS_PATH="/home/dilyn/git/KISS-me:$KISS_PATH:/home/dilyn/git/community/community"
+export KISS_HOOK="/home/dilyn/.local/bin/kiss-hook"
 export KISS_COMPRESS=xz
-export BLIS_NUM_THREADS="4"
-export PF_INFO="title os host kernel uptime pkgs memory palette"
 export PASH_KEYID=dilyn.corner@tutanota.com
 export PASH_DIR=/home/dilyn/git/pass-store
 export PASH_LENGTH=25
 export PASH_TIMEOUT=60
+export BLIS_NUM_THREADS="4"
+export PF_INFO="title os host kernel uptime pkgs memory palette"
 
 # Sane default programs
 export EDITOR="nvim"

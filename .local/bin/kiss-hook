@@ -1,0 +1,11 @@
+#!/bin/sh 
+
+case $TYPE in 
+    pre-build)
+        case $PKG in
+            blis) export CFLAGS="-march=native -mtune=native -pipe -O3 "; CXXFLAGS=$CFLAGS ;;
+            R-blis) export CFLAGS="-march=native -mtune=native -pipe -O3 "; CXXFLAGS=$CFLAGS ;;
+            node) export CFLAGS="-march=native -mtune=native -pipe -O3 "; CXXFLAGS=$CFLAGS ;;
+        esac
+    ;;
+esac
