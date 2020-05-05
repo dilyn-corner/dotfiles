@@ -4,7 +4,7 @@
   message("Welcome back ", Sys.getenv("USER"),"!\n","working directory is:", getwd())
 }
 
-options(prompt="~> ", digits=4, show.signif.stars=FALSE)
+options(prompt="=> ", digits=4, show.signif.stars=FALSE)
 
 local({
     r = getOption("repos")
