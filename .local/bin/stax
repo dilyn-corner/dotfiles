@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# A simple alternative to xinit.
+
+( exec X -keeptty :0 vt1 ;) &
+DISPLAY=:0 "$HOME/.xinitrc"
+
+wait
