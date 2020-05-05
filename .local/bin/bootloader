@@ -1,0 +1,13 @@
+#!/bin/sh 
+
+ver=${1:-new}
+
+efibootmgr \
+    --create \
+    --disk /dev/nvme0n1 \
+    --part 1 \
+    --label "KISS Linux" \
+    --loader "/vmlinuz-$ver" \
+    --unicode 'root=/dev/nvme0n1p3 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E'
+    
+echo "efibootmgr"
