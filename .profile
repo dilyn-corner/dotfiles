@@ -5,13 +5,12 @@ export MAKEFLAGS="-j4"
 export LDFLAGS=" "
 
 # Sane default environment variables
-export ENV=/home/dilyn/.shrc
+export ENV=$HOME/.shrc
 export TZ=EST5EDT
-export PATH="/usr/lib/ccache/bin:/home/dilyn/.local/bin:$PATH"
-export KISS_PATH="/home/dilyn/git/KISS-me:$KISS_PATH:/home/dilyn/git/community/community"
-export KISS_HOOK="/home/dilyn/.local/bin/kiss-hook"
+export PATH="/usr/lib/ccache/bin:$HOME/.local/bin:$PATH"
+export KISS_PATH="$HOME/git/KISS-me:$HOME/git/KISS-haskell:$HOME/git/KISS-kde:$KISS_PATH:$HOME/git/community/community"
 export KISS_COMPRESS=xz
-export PASH_DIR=/home/dilyn/git/pass-store
+export PASH_DIR=$HOME/git/pass-store
 export PASH_KEYID=dilyn.corner@tutanota.com
 export PASH_LENGTH=25
 export PASH_TIMEOUT=60
