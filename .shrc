@@ -21,13 +21,3 @@ alias __D=`echo "\002"`     # left arrow = ^b = back a character
 alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
 
-# I stole the code and I'm not sure if this function will work.
-# ~some time passes~
-# Narrator: it did not work
-#gitrelease() {
-#    curl -s https://api.github.com/repos/$1/releases/atest \
-#        | grep "browser_download_url.*" \
-#        | cut -d : -f 2,3 \
-#        | tr -d \" \
-#        | wget -O -
-#}

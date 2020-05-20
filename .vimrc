@@ -22,6 +22,7 @@ call plug#end()
     set hlsearch               " Highlight results
     set showmatch              " Briefly highlight matching bracket
     set showcmd                " Show commands as they come
+    set tw=80                  " 60 column limit
     set breakindent            " Line wraps maintain indent
     set tabstop=4              " Tabs are 4 spaces
     set shiftwidth=4           " Set indentation column width
