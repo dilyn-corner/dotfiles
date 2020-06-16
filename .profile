@@ -1,18 +1,18 @@
 # Sane default build variables
-export CFLAGS="-march=native -mtune=native -pipe -O3"
+export CFLAGS="-march=native -mtune=native -O3 -fno-math-errno -pipe"
 export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j4"
 export LDFLAGS=" "
+export CC=clang
+export CXX=clang++
 
 # Sane default environment variables
 export ENV=$HOME/.shrc
 export TZ=EST5EDT
 export PATH="$HOME/.local/bin:$PATH"
-export KISS_PATH="$KISS_PATH:$HOME/git/community/community"
-#export KISS_PATH="$HOME/git/KISS-wayland/wayland:$KISS_PATH"
-#export KISS_PATH="$HOME/git/KISS-dbus/kiss-dbus:$KISS_PATH"
-#export KISS_PATH="$HOME/git/KISS-kde/KISS-kde:$KISS_PATH"
 export KISS_PATH="$HOME/git/KISS-me/KISS-me:$KISS_PATH"
+export KISS_PATH="$KISS_PATH:$HOME/git/community/community"
+export KISS_TMPDIR="/tmp"
 export KISS_COMPRESS=xz
 export PASH_DIR=$HOME/git/pass-store
 export PASH_KEYID=dilyn.corner@tutanota.com

@@ -1,14 +1,14 @@
 #!/bin/sh
-# This has become a generic shrc file; comments will specify sh specifics.
 
 (paleta -r &)
 
+alias ls="ls -h -p --color=always"
 alias github="pash c github.com/dilyn-corner"
 alias email="pash c tutanota.com/dilyn.corner"
 alias ix="curl -F 'f:1=<-' ix.io"
 alias dotties='/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}'
 
-## ksh (current)
+## ksh
 PS1='${PWD} -> '
 export HISTFILE=/home/dilyn/.ksh_history
 
@@ -20,4 +20,3 @@ alias __C=`echo "\006"`     # right arrow = ^f = forward a character
 alias __D=`echo "\002"`     # left arrow = ^b = back a character
 alias __H=`echo "\001"`     # home = ^a = start of line
 alias __Y=`echo "\005"`     # end = ^e = end of line
-
