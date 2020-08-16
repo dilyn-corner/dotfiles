@@ -1,7 +1,8 @@
-Section "InputClass"
-    Identifier      "libinput pointer catchall"
-    MatchIsPointer  "on"
+Section "InputDevice"
+    Identifier      "Microsoft Arc Mouse"
+    Option    	    "AutoServerLayout" "true"
     Driver          "libinput"
+    Option 	    "Device" "/dev/input/event9"
 ## The faster you move, the more distance pointer will travel, using "polynomial" profile
 #    Option "AccelerationProfile"    "2"
 ## Tweak cursor movement speed with this

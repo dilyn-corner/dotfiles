@@ -1,7 +1,9 @@
-Section "InputClass"
-    MatchIsTouchpad "on"
-    Identifier      "Touchpads"
-    Driver          "mtrack"
+Section "InputDevice"
+    Identifier   "Apple Touchpad"
+    Option 	     "CorePointer"
+    Option 	     "AutoServerLayout" "true"
+    Driver	     "mtrack"
+    Option	     "Device" "/dev/input/event14"
 # The faster you move, the more distance pointer will travel, using "polynomial" profile
     Option "AccelerationProfile"    "2"
 # Tweak cursor movement speed with this
