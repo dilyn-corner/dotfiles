@@ -1,5 +1,15 @@
-#!/bin/sh 
+#!/bin/sh
 
-( exec X -keeptty :0 vt1 ;) &
-DISPLAY=:0 "$HOME/.xinitrc"
+trap 'DISPLAY=:0 ~/.xinitrc' USR1
+
+(
+    trap '' USR1
+    exec X -ardelay 200 \
+           -arinterval 20 \
+           -dpms \
+           -dpi 96 \
+           -nolisten tcp \
+           :0 vt1
+) &
+
 wait
