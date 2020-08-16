@@ -1,8 +1,10 @@
 #!/bin/sh
 
-setxkbmap -option caps:escape
+# Set wallpaper
+~/.fehbg &
 
-bud ~/Wallpapers/Girl.jpg &
+# Start compositor
 picom -b --config $HOME/.config/picom/picom.conf --experimental-backends &
 
+# Start wm
 exec sowm
