@@ -10,18 +10,28 @@ Plug 'dylanaraps/wal.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
+set list
+set lcs=tab:>>·
+set lcs+=trail:·
+
 " Some basics:
+    set nocp   " Less vi more improved
+    set shm=at " Shorten messages
 " Formating
     set tw=80  " 80 column limit
+    set ai     " Inherit indents automatically
     set et     " Tabs are expanded into spaces
     set ts=4   " Tabs are 4 spaces
     set sw=4   " Set indentation column width
     set bri    " Line wraps maintain indent
     set nu rnu " Relative line numbers
+    set ru     " Cursor ruler
+    set syn=on " We all deserve a little syntax
 " Altering
     set cb+=unnamedplus     " Clipboard instead of registers
     set bs=indent,eol,start " Make backspace behave properly
 " Navigating
+    set ww=h,l " h and l navigate line wraps, as expected
     set sm     " Briefly highlight matching bracket
     set is     " Incremental search
     set hls    " Highlight results
