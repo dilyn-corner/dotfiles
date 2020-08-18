@@ -1,4 +1,0 @@
-#!/bin/sh
-
-light -O
-light -s "sysfs/leds/smc::kbd_backlight" -O

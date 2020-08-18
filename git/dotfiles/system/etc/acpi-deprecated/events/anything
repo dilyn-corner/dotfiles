@@ -1,2 +1,0 @@
-event=.*
-action=/etc/acpi/handler.sh %e
