@@ -1,12 +1,24 @@
-#!/bin/sh 
+#!/bin/sh -e
+# You gotta run this nasty boy as root
+# Good luck have fun
 
-efibootmgr \
-    --create \
-    --disk /dev/nvme0n1 \
-    --part 1 \
-    --label "KISS" \
-    --loader "/vmlinuz" \
-    --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E \
-    zswap_enabled=1'
-    
+efibootmgr -b 0000 -B
+efibootmgr -b 0001 -B
+
+efibootmgr --create \
+           --disk /dev/nvme0n1 \
+           --part 1 \
+           --label "wyverkiss" \
+           --loader "/vmlinuz" \
+           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E \
+                zswap_enabled=1'
+
+efibootmgr --create \
+           --disk /dev/nvme0n1 \
+           --part 1 \
+           --label "wyverkiss.old" \
+           --loader "/vmlinuz.old" \
+           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E \
+                zswap_enabled=1'
+
 echo "efibootmgr"
