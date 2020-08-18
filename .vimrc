@@ -1,6 +1,6 @@
 " Plugins!
-let g:ale_completion_enabled=1 " ALE has to be loaded before it's loaded
 call plug#begin('~/.vim/plugged')
+let g:ale_completion_enabled=1
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -10,37 +10,35 @@ Plug 'dylanaraps/wal.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-set list
-set lcs=tab:>>·
-set lcs+=trail:·
 
 " Some basics:
-    set nocp   " Less vi more improved
-    set shm=at " Shorten messages
+    set nocp                " Less vi more improved
+    set shm=at              " Shorten messages
 " Formating
-    set tw=80  " 80 column limit
-    set ai     " Inherit indents automatically
-    set et     " Tabs are expanded into spaces
-    set ts=4   " Tabs are 4 spaces
-    set sw=4   " Set indentation column width
-    set bri    " Line wraps maintain indent
-    set nu rnu " Relative line numbers
-    set ru     " Cursor ruler
-    set syn=on " We all deserve a little syntax
+    set tw=80               " 80 column limit
+    set syn=on              " We all deserve a little syntax
+    set lcs=trail:·         " Display a · for trailing spaces
+    set ai                  " Inherit indents automatically
+    set et                  " Tabs are expanded into spaces
+    set ts=4                " Tabs are 4 spaces
+    set sw=4                " Set indentation column width
+    set bri                 " Line wraps maintain indent
+    set nu rnu              " Relative line numbers
+    set ru                  " Cursor ruler
 " Altering
     set cb+=unnamedplus     " Clipboard instead of registers
     set bs=indent,eol,start " Make backspace behave properly
 " Navigating
-    set ww=h,l " h and l navigate line wraps, as expected
-    set sm     " Briefly highlight matching bracket
-    set is     " Incremental search
-    set hls    " Highlight results
-    set sc     " Show commands as they come
-    set so=3   " Minimum lines to show above/below
-    set siso=5 " Minimum columns to show left/right
-    set nosol  " Maintain cursor position for commands
-    set sb     " Windows split down
-    set spr    " Windows split right
+    set ww=h,l              " h and l navigate line wraps, as expected
+    set sm                  " Briefly highlight matching bracket
+    set is                  " Incremental search
+    set hls                 " Highlight results
+    set sc                  " Show commands as they come
+    set so=3                " Minimum lines to show above/below
+    set siso=5              " Minimum columns to show left/right
+    set nosol               " Maintain cursor position for commands
+    set sb                  " Windows split down
+    set spr                 " Windows split right
 
 
 " wal
