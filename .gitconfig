@@ -1,0 +1,8 @@
+[user]
+	name = Dilyn Corner
+	email = dilyn.corner@tutanota.com
+	signingkey = 42D68EDC
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	rebase = true
