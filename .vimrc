@@ -49,7 +49,7 @@ colorscheme wal
 " Set the leader key
 let mapleader=","
 " Unset last search pattern (remove highlighting)
-nnoremap <silent> <esc> :noh<return><esc>
+nnoremap <esc><esc> :nohl<cr>
 " Disable adding comments to lines automagically
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " More natural split navigation
