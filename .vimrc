@@ -17,7 +17,6 @@ call plug#end()
 " Formating
     set tw=80               " 80 column limit
     set syn=on              " We all deserve a little syntax
-    set lcs=trail:·         " Display a · for trailing spaces
     set ai                  " Inherit indents automatically
     set et                  " Tabs are expanded into spaces
     set ts=4                " Tabs are 4 spaces
@@ -26,7 +25,7 @@ call plug#end()
     set nu rnu              " Relative line numbers
     set ru                  " Cursor ruler
 " Altering
-    set cb+=unnamedplus     " Clipboard instead of registers
+    "set cb+=unnamedplus     " Clipboard instead of registers
     set bs=indent,eol,start " Make backspace behave properly
 " Navigating
     set ww=h,l              " h and l navigate line wraps, as expected
@@ -49,7 +48,7 @@ colorscheme wal
 " Set the leader key
 let mapleader=","
 " Unset last search pattern (remove highlighting)
-nnoremap <esc><esc> :nohl<cr>
+nnoremap <CR> :noh<CR><CR>
 " Disable adding comments to lines automagically
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " More natural split navigation
