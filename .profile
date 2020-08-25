@@ -6,7 +6,7 @@ export LDFLAGS=" "
 
 # Sane default environment variables
 export ENV=$HOME/.shrc
-export PATH=$HOME/.local/bin:/usr/bin
+export PATH=/usr/lib/ccache/bin:$HOME/.local/bin:/usr/bin
 export KISS_PATH=$KISS_PATH:$HOME/git/community/community
 export KISS_PATH=$HOME/git/KISS-me/KISS-me:$KISS_PATH
 export KISS_HOOK=$HOME/git/KISS-me/hooks
