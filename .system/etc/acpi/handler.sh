@@ -2,17 +2,17 @@
 
 case $1 in 
     video/brightnessdown)
-        xbacklight -dec 10;;
+        brightnessctl s 10%-;;
     video/brightnessup)
-        xbacklight -inc 10;;
+        brightnessctl s +10%;;
     button/kbdillumdown)
-        xbacklight -ctrl smc::kbd_backlight -dec 10;;
+        brightnessctl -d smc::kbd_backlight s 20%-;;
     button/kbdillumup)
-        xbacklight -ctrl smc::kbd_backlight -inc 10;;
+        brightnessctl -d smc::kbd_backlight s +20%;;
     button/mute)
         amixer sset Master toggle;;
     button/volumedown)
-        amixer -- sset Master playback 5%-;;
+        amixer -- sset Master 5%-;;
     button/volumeup)
-        amixer -- sset Master playback 5%+;;
+        amixer -- sset Master 5%+;;
 esac
