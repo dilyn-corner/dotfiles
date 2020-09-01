@@ -1,4 +1,4 @@
 #!/bin/sh
 
-light -O
-light -s "sysfs/leds/smc::kbd_backlight" -O
+brightnessctl -s 2>&1 &
+brightnessctl -d smc::kbd_backlight -s 2>&1 &
