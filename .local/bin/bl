@@ -4,14 +4,22 @@
 
 efibootmgr -b 0000 -B
 efibootmgr -b 0001 -B
+efibootmgr -b 0002 -B
 
-#efibootmgr --create \
-#           --disk /dev/nvme0n1 \
-#           --part 1 \
-#           --label "wyverkiss.old" \
-#           --loader "/vmlinuz.old" \
-#           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
-#
+efibootmgr --create \
+           --disk /dev/nvme0n1 \
+           --part 1 \
+           --label "wyverkiss.kde" \
+           --loader "/vmlinuz.kde" \
+           --unicode 'root=/dev/nvme0n1p3 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+
+efibootmgr --create \
+           --disk /dev/nvme0n1 \
+           --part 1 \
+           --label "wyverkiss.old" \
+           --loader "/vmlinuz.old" \
+           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+
 efibootmgr --create \
            --disk /dev/nvme0n1 \
            --part 1 \
