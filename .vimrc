@@ -17,7 +17,6 @@ call plug#end()
 " Formating
     set tw=80               " 80 column limit
     set syn=on              " We all deserve a little syntax
-    set ai                  " Inherit indents automatically
     set et                  " Tabs are expanded into spaces
     set ts=4                " Tabs are 4 spaces
     set sw=4                " Set indentation column width
