@@ -1,0 +1,6 @@
+# Save backlight and keyboard brightness
+brightnessctl -s &
+brightnessctl -d smc::kbd_backlight -s &
+
+# Save volume
+alsactl store
