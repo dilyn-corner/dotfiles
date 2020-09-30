@@ -2,29 +2,37 @@
 # You gotta run this nasty boy as root
 # Good luck have fun
 
-efibootmgr -b 0000 -B
-efibootmgr -b 0001 -B
-efibootmgr -b 0002 -B
+#efibootmgr -b 0000 -B
+#efibootmgr -b 0001 -B
+#efibootmgr -b 0002 -B
+#efibootmgr -b 0003 -B
 
-efibootmgr --create \
-           --disk /dev/nvme0n1 \
-           --part 1 \
-           --label "wyverkiss.kde" \
-           --loader "/vmlinuz.kde" \
-           --unicode 'root=/dev/nvme0n1p3 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+efibootmgr --c \
+           --d /dev/nvme0n1 \
+           --p 1 \
+           --L "wyverkiss.kde" \
+           --l "/vmlinuz.kde" \
+           --u 'root=/dev/nvme0n1p3 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
 
-efibootmgr --create \
-           --disk /dev/nvme0n1 \
-           --part 1 \
-           --label "wyverkiss.old" \
-           --loader "/vmlinuz.old" \
-           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+efibootmgr -c \
+           -d /dev/nvme0n1 \
+           -p 1 \
+           -L "wyverkiss.old" \
+           -l "/vmlinuz.old" \
+           -u 'root=/dev/nvme0n1p3 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
 
-efibootmgr --create \
-           --disk /dev/nvme0n1 \
-           --part 1 \
-           --label "wyverkiss" \
-           --loader "/vmlinuz" \
-           --unicode 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+efibootmgr -c \
+           -d /dev/nvme0n1 \
+           -p 1 \
+           -L "wyverkiss.old" \
+           -l "/vmlinuz.old" \
+           -u 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
+
+efibootmgr -c \
+           -d /dev/nvme0n1 \
+           -p 1 \
+           -L "wyverkiss" \
+           -l "/vmlinuz" \
+           -u 'root=/dev/nvme0n1p2 rw acpi_osi=!Darwin acpi_mask_gpe=0x4E zswap_enabled=1'
 
 echo "efibootmgr"
