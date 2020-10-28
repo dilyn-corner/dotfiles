@@ -1,0 +1,2 @@
+# Save volume
+alsactl store
