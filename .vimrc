@@ -1,14 +1,13 @@
 "" Plugins!
 call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-"
 "" Some basics:
     set nocp                " Less vi more improved
     filetype plugin on      " Enable filetype detection
@@ -25,6 +24,7 @@ call plug#end()
 "" Altering
     set cb+=unnamedplus     " Clipboard instead of registers
     set bs=indent,eol,start " Make backspace behave properly
+    set updatetime=100      " Faster update times
 "" Navigating
     set ww=h,l              " h and l navigate line wraps, as expected
     set sm                  " Briefly highlight matching bracket
@@ -36,10 +36,6 @@ call plug#end()
     set nosol               " Maintain cursor position for commands
     set sb                  " Windows split down
     set spr                 " Windows split right
-
-
-" wal
-colorscheme wal
 
 
 " Keymaps
@@ -74,24 +70,55 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 
 "" gitgutter
-" Create a hunk summary for the statusline
-function! GitStatus()
-    let [a,m,r] = GitGutterGetHunkSummary()
-    return printf('+%d ~%d -%d', a, m, r)
-endfunction
 " Next/Previous hunk
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+" Define the hunk status function
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
 
 
-"" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
+"" lightline 
+" Our font is too big
+set laststatus=2
+" Useless modes
+set noshowmode
+" Modify the statusline a bit
+" Ensure it's empty
+let g:lightline = {}
+" Define ALE warnings/errors/information/status
+let g:lightline.component_expand = {
+    \  'linter_checking': 'lightline#ale#checking',
+    \  'linter_infos': 'lightline#ale#infos',
+    \  'linter_warnings': 'lightline#ale#warnings',
+    \  'linter_errors': 'lightline#ale#errors',
+    \  'linter_ok': 'lightline#ale#ok',
+    \ }
+let g:lightline.component_type = {
+    \     'linter_checking': 'right',
+    \     'linter_infos': 'right',
+    \     'linter_warnings': 'warning',
+    \     'linter_errors': 'error',
+    \     'linter_ok': 'right',
+    \ }
+" Print the statusline
+let g:lightline = { 
+    \ 'active': {
+    \   'left': [[ 'mode', 'paste' ],
+    \            [ 'gitbranch', 'gitgutter', 'readonly', 'filename', 'modified' ]],
+    \   'right': [[ 'lineinfo' ],
+    \             [ 'percent' ],
+    \             [ 'fileformat', 'fileencoding', 'filetype' ],
+    \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]],
+    \ },
+    \ 'component_function': { 
+    \ 'gitbranch': 'gitbranch#name', 
+    \ 'gitgutter': 'GitStatus',
+    \ },
+    \ }
 
 
-"" statusline
-set statusline+=%{GitStatus()}
+" wal
+colorscheme wal
