@@ -7,14 +7,7 @@ export LDFLAGS=" "
 # Sane default environment variables
 export ENV=$HOME/.shrc
 export PATH=/usr/lib/ccache/bin:$HOME/.local/bin:/usr/bin
-export KISS_PATH=$HOME/git/KISS-me/core
-export KISS_PATH=$KISS_PATH:$HOME/git/KISS-me/extra
-export KISS_PATH=$KISS_PATH:$HOME/git/KISS-me/wayland
-export KISS_PATH=$KISS_PATH:/var/db/kiss/wyverkiss/core
-export KISS_PATH=$KISS_PATH:/var/db/kiss/wyverkiss/extra
-export KISS_PATH=$KISS_PATH:/var/db/kiss/wyverkiss/gnu
-export KISS_PATH=$KISS_PATH:$HOME/git/community/community
-export KISS_HOOK=$HOME/git/KISS-me/hooks
+export KISS_HOOK=/var/db/kiss/personal/hooks
 export KISS_TMPDIR=/tmp
 export KISS_COMPRESS=xz
 export PASH_KEYID=dilyn.corner@tutanota.com
@@ -26,7 +19,6 @@ export PF_INFO="ascii title os host kernel uptime pkgs memory palette"
 # Dumb wayland variables
 export QT_QPA_PLATFORM=wayland-egl
 export BEMENU_BACKEND=wayland
-export QT_SCALE_FACTOR=1.5
 
 # Sane default programs
 export EDITOR=vim
