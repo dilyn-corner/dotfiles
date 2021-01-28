@@ -5,7 +5,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
-Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 "" Some basics:
@@ -105,6 +104,7 @@ let g:lightline.component_type = {
     \ }
 " Print the statusline
 let g:lightline = { 
+    \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [[ 'mode', 'paste' ],
     \            [ 'gitbranch', 'gitgutter', 'readonly', 'filename', 'modified' ]],
@@ -120,5 +120,5 @@ let g:lightline = {
     \ }
 
 
-" wal
-colorscheme wal
+" colors
+colorscheme vibrant-night
