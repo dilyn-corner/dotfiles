@@ -1,6 +1,9 @@
 # We can't use the kernel command line to change the scheduler
 echo kyber > /sys/block/nvme0n1/queue/scheduler
 
+# Make /mnt/share dilyn:dilyn
+chmod dilyn:dilyn /mnt/share
+
 # Load the wifi module
 modprobe wl >/dev/null 2>&1
 
