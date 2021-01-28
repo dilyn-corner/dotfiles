@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+for dev in 0 1 2 3; do
+    swapoff "/dev/zram$dev"
+    echo 1 > "/sys/block/zram$dev/reset"
+done
+
+umount /dev/zram4
+echo 1 > /sys/block/zram4/reset
