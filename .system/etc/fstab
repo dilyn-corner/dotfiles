@@ -1,6 +1,5 @@
-# root, home, boot, swap, tmp
-/dev/nvme0n1p2 /     ext4  defaults,noatime      0 1
-/dev/nvme0n1p1 /boot vfat  defaults,noatime      0 2
-/dev/nvme0n1p4 /home ext4  defaults,noatime      0 2
-/swapfile      none  swap  defaults              0 0
-tmpfs          /tmp  tmpfs defaults,nosuid,nodev 0 0
+/dev/nvme0n1p2 /          ext4 defaults,noatime 0 1
+/dev/nvme0n1p4 /home      ext4 defaults,noatime 0 2
+/dev/nvme0n1p5 /mnt/share ext4 defaults,noatime 0 2
+#/dev/nvme0n1p1 /boot      vfat  defaults,noatime      0 2
+#tmpfs          /tmp       tmpfs defaults,nosuid,nodev 0 0
