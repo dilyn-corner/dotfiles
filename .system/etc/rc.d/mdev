@@ -1,0 +1,35 @@
+chmod root:root 666 /dev/null
+chmod root:root 666 /dev/zero
+chmod root:root 666 /dev/full
+chmod root:root 444 /dev/random
+chmod root:root 444 /dev/urandom
+chmod root:root 640 /dev/kmem
+chmod root:root 640 /dev/mem
+chmod root:root 640 /dev/port
+chmod root:tty  600 /dev/console
+chmod root:tty  666 /dev/ptmx
+chmod root:tty  660 /dev/pty.*
+
+
+chmod root:tty 666 tty
+for tty in 0 1 2 3 4 5 6 7 8 9; do
+    chmod root:tty 660 tty$tty
+done
+
+SUBSYSTEM=input;.* root:input 660
+
+adsp        root:audio 660 >sound/
+audio       root:audio 660 >sound/
+dsp         root:audio 660 >sound/
+mixer       root:audio 660 >sound/
+sequencer.* root:audio 660 >sound/
+
+card[0-9]   root:video 660 =dri/
+
+agpgart     root:root  660 >misc/
+psaux       root:root  660 >misc/
+rtc         root:root  664 >misc/
+
+dri/.*      root:video 660
+snd/.*      root:audio 660
+
