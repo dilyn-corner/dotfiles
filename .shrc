@@ -30,7 +30,6 @@ alias oce="paleta < /usr/share/paleta/palettes/base16-ocean-dark > $HOME/.cache/
 alias sea="paleta < /usr/share/paleta/palettes/seafoam-pastel-dark > $HOME/.cache/cp"
 alias twi="paleta < /usr/share/paleta/palettes/base16-twilight-dark > $HOME/.cache/cp"
 alias dotties="/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}"
-alias chromium="chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu-memory-buffer-video-frames --no-sandbox"
 
 
 ## Colors
