@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+github-release release \
+    --security-token 193b8b83ea7c425020a075ac05b42bb5711f7e33 \
+    --user dilyn-corner \
+    --repo "$1" \
+    --tag "$2"
+
+github-release upload \
+    --security-token 193b8b83ea7c425020a075ac05b42bb5711f7e33 \
+    --user dilyn-corner
+    --repo "$1" \
+    --tag "$2" \
+    --name "$3" \
+    --file "$3"

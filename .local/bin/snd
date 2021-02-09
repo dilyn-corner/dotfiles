@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case "$1" in
+    up)
+        amixer -- sset Master 5%+;;
+    down)
+        amixer -- sset Master 5%-;;
+    off)
+        amixer sset Master toggle;;
+esac

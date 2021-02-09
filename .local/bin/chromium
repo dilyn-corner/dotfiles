@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+/usr/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu-memory-buffer-video-frames --no-sandbox
