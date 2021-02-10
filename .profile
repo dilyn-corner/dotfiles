@@ -14,10 +14,12 @@ export KISS_GREP=rg
 export PASH_KEYID=dilyn.corner@tutanota.com
 export PASH_DIR=$HOME/git/pass-store
 export PASH_LENGTH=25
-export PASH_TIMEOUT=60
+export PASH_TIMEOUT=0
+export PASH_CLIP=wl-copy
 export PF_INFO="ascii title os host kernel uptime pkgs memory palette"
 
 # Sane default programs
+export PAGER="vim -c PAGER -"
 export EDITOR=vim
 export TERMINAL=foot
 export BROWSER=chromium

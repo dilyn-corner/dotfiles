@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/vim-pager'
 call plug#end()
 
 "" Some basics:

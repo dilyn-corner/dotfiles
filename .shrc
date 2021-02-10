@@ -19,6 +19,7 @@ export HISTFILE=$HOME/.ksh_history
 
 ## Aliases!
 alias grep="rg"
+alias less="$PAGER"
 alias ls="coreutils ls"
 alias ix="curl -F 'f:1=<-' ix.io"
 alias github="pash c github.com/dilyn-corner"
