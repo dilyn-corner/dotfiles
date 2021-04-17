@@ -2,9 +2,9 @@
 
 case "$1" in
     up)
-        amixer -- sset Master 5%+;;
+        amixer -- sset IEC958 5%+;;
     down)
-        amixer -- sset Master 5%-;;
+        amixer -- sset IEC958 5%-;;
     off)
-        amixer sset Master toggle;;
+        amixer sset IEC958 toggle;;
 esac
