@@ -18,19 +18,11 @@ export HISTFILE=$HOME/.ksh_history
 
 
 ## Aliases!
-alias grep="rg"
-alias less="$PAGER"
-alias ls="coreutils ls"
+alias ls="ls --color"
 alias ix="curl -F 'f:1=<-' ix.io"
 alias github="pash c github.com/dilyn-corner"
 alias email="pash c tutanota.com/dilyn.corner"
-alias miu="paleta < /usr/share/paleta/palettes/miu-dark > $HOME/.cache/cp"
-alias ryu="paleta < /usr/share/paleta/palettes/ryuuko-dark > $HOME/.cache/cp"
-alias sub="paleta < /usr/share/paleta/palettes/subliminal-dark > $HOME/.cache/cp"
-alias oce="paleta < /usr/share/paleta/palettes/base16-ocean-dark > $HOME/.cache/cp"
-alias sea="paleta < /usr/share/paleta/palettes/seafoam-pastel-dark > $HOME/.cache/cp"
-alias twi="paleta < /usr/share/paleta/palettes/base16-twilight-dark > $HOME/.cache/cp"
-alias dotties="/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}"
+alias dotties='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
 
 ## Colors
@@ -38,11 +30,10 @@ alias dotties="/usr/bin/git --git-dir=${HOME}/git/dotfiles/ --work-tree=${HOME}"
 cat "$HOME/.cache/cp"
 
 
-## Functions
-# Automate commiting
-git () {
-    case "$1" in
-        commit) /usr/bin/git commit -S ;;
-        *) /usr/bin/git "$@" ;;
-    esac
-}
+## SSH Agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! "$SSH_AUTH_SOCK" ]; then
+    . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
+fi

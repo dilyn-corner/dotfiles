@@ -1,7 +1,7 @@
 # Insane default build variables
 export CFLAGS="-march=native -mtune=native -O3 -fno-math-errno -pipe -flto=thin"
 export CXXFLAGS="$CFLAGS"
-export MAKEFLAGS=-j4
+export MAKEFLAGS=-j24
 export LDFLAGS=" "
 
 # Sane default environment variables
@@ -9,8 +9,7 @@ export ENV=$HOME/.shrc
 export PATH=/usr/lib/ccache/bin:$HOME/.local/bin:/usr/bin
 export KISS_HOOK=/var/db/kiss/personal/hooks
 export KISS_TMPDIR=/tmp
-export KISS_COMPRESS=xz
-export KISS_GREP=rg
+export KISS_COMPRESS=zst
 export PASH_KEYID=dilyn.corner@tutanota.com
 export PASH_DIR=$HOME/git/pass-store
 export PASH_LENGTH=25
@@ -25,9 +24,5 @@ export TERMINAL=foot
 export BROWSER=chromium
 
 # Wayland runtime dir
-export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime-dir}"
-
-[ -d "$XDG_RUNTIME_DIR" ] || {
-    mkdir -p   "$XDG_RUNTIME_DIR"
-    chmod 0700 "$XDG_RUNTIME_DIR"
-}
+mkdir -pm 0700 "${XDG_RUNTIME_DIR:=/tmp/$(id -u)-runtime-dir}"
+export XDG_RUNTIME_DIR

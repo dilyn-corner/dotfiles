@@ -10,6 +10,7 @@ call plug#end()
 
 "" Some basics:
     set nocp                " Less vi more improved
+    set noswf               " Clutter be gone
     filetype plugin on      " Enable filetype detection
     syntax on               " Enable syntax highlighting
 "" Formating
