@@ -1,8 +1,17 @@
 [user]
 	name = Dilyn Corner
-	email = dilyn.corner@tutanota.com
+	email = dilyn.corner@k1sslinux.org
 	signingkey = 42D68EDC
 [credential]
 	helper = cache --timeout=3600
+[commit]
+	gpgSign = true
+	verbose = true
 [pull]
 	rebase = true
+[rebase]
+	stat = true
+[color]
+	ui = auto
+[merge]
+	verifySignatures = true
