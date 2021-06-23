@@ -1,3 +1,3 @@
 #!/bin/sh -e
 
-/usr/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu-memory-buffer-video-frames --use-gl=egl --enable-features=VaapiVideoDecoder --ignore-gpu-blocklist
+/usr/bin/chromium --ozone-platform=wayland --use-gl=egl --enable-features=VaapiVideoDecoder --disable-gpu-memory-buffer-video-frames 
