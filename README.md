@@ -34,4 +34,4 @@ dotties remote set-url origin https://github.com/dilyn-corner/dotfiles
 
 Because I need to remind you why this exists.
 
-![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/scrots/busybusy.jpg)
+![alt text](https://github.com/dilyn-corner/dotfiles/blob/master/scrots/dilyn-corner.png)
