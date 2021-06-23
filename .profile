@@ -20,9 +20,15 @@ export PF_INFO="ascii title os host kernel uptime pkgs memory palette"
 # Sane default programs
 export PAGER="vim -c PAGER -"
 export EDITOR=vim
-export TERMINAL=foot
+export TERMINAL=footclient
 export BROWSER=chromium
+
+# For jj
+export IRC_DIR=$HOME/.cache
 
 # Wayland runtime dir
 mkdir -pm 0700 "${XDG_RUNTIME_DIR:=/tmp/$(id -u)-runtime-dir}"
 export XDG_RUNTIME_DIR
+
+# SDL for QEMU
+export SDL_VIDEODRIVER=wayland

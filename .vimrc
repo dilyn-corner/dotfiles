@@ -13,6 +13,8 @@ call plug#end()
     set noswf               " Clutter be gone
     filetype plugin on      " Enable filetype detection
     syntax on               " Enable syntax highlighting
+    set list                " A list?? what for!
+    set listchars=tab:>-    " Make tabs show themselves
 "" Formating
     set shm=at              " Shorten messages
     set tw=80               " 80 column limit
