@@ -26,7 +26,7 @@ alias dotties='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
 
 ## Colors
-# paleta 
+# paleta
 cat "$HOME/.cache/cp"
 
 

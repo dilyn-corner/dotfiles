@@ -1,128 +1,175 @@
-"" Plugins!
+" Plugins!
 call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/vim-gitbranch'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'lambdalisue/vim-pager'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-"" Some basics:
-    set nocp                " Less vi more improved
-    set noswf               " Clutter be gone
-    filetype plugin on      " Enable filetype detection
-    syntax on               " Enable syntax highlighting
-    set list                " A list?? what for!
-    set listchars=tab:>-    " Make tabs show themselves
-"" Formating
-    set shm=at              " Shorten messages
-    set tw=80               " 80 column limit
-    set et                  " Tabs are expanded into spaces
-    set ts=4                " Tabs are 4 spaces
-    set sw=4                " Set indentation column width
-    set bri                 " Line wraps maintain indent
-    set nu rnu              " Relative line numbers
-    set ru                  " Cursor ruler
-"" Altering
-    set cb+=unnamedplus     " Clipboard instead of registers
-    set bs=indent,eol,start " Make backspace behave properly
-    set updatetime=100      " Faster update times
-"" Navigating
-    set ww=h,l              " h and l navigate line wraps, as expected
-    set sm                  " Briefly highlight matching bracket
-    set is                  " Incremental search
-    set hls                 " Highlight results
-    set sc                  " Show commands as they come
-    set so=3                " Minimum lines to show above/below
-    set siso=5              " Minimum columns to show left/right
-    set nosol               " Maintain cursor position for commands
-    set sb                  " Windows split down
-    set spr                 " Windows split right
+colorscheme vibrant-night
 
+" Settings for sanity
+set nocp                               " Less vi more improved
+set noswf                              " Clutter be gone
+filetype plugin on                     " Enable filetype detection
+syntax on                              " Enable syntax highlighting
+set list                               " A list?? what for!
+set listchars=tab:>-                   " Make tabs show themselves
+set shm=at                             " Shorten messages
+set tw=80                              " 80 column limit
+set et                                 " Tabs are expanded into spaces
+set ts=4                               " Tabs are 4 spaces
+set sw=4                               " Set indentation column width
+set bri                                " Line wraps maintain indent
+set nu rnu                             " Relative line numbers
+set ru                                 " Cursor ruler
+set enc=UTF-8                          " Set default file encoding
+set cb+=unnamedplus                    " Clipboard instead of registers
+set bs=indent,eol,start                " Make backspace behave properly
+set updatetime=100                     " Faster update times
+set ww=h,l                             " h and l navigate line wraps as expected
+set sm                                 " Briefly highlight matching bracket
+set is                                 " Incremental search
+set hls                                " Highlight results
+set sc                                 " Show commands as they come
+set so=3                               " Minimum lines to show above/below
+set siso=5                             " Minimum columns to show left/right
+set nosol                              " Maintain cursor position for commands
+set sb                                 " Windows split down
+set spr                                " Windows split right
+set omnifunc=ale#completion#OmniFunc   " ALE completion
+set laststatus=2                       " Our font is too big for Lightline
+set noshowmode                         " Don't display redundant modes
 
 " Keymaps
-" Set the leader key
-let mapleader=","
-" Unset last search pattern (remove highlighting)
-nnoremap <CR> :noh<CR><CR>
-" Disable adding comments to lines automagically
-"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" More natural split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-" In order to change split size, you can do ctrl-w +/-/>/<
+let mapleader=","                         " Set the leader key
+nnoremap <CR> :noh<CR><CR>                " Remove search highlighting
+nnoremap U <C-r>                          " Redo is the opposite of undo
+nnoremap <C-J> <C-W>j                     " More
+nnoremap <C-K> <C-W>k                     " natural
+nnoremap <C-L> <C-W>l                     " split
+nnoremap <C-H> <C-W>h                     " navigation,
+nnoremap vv <C-W>v                        " split
+nnoremap ss <C-W>s                        " creation,
+nnoremap Q <C-W>q                         " destruction,
+nnoremap <silent> <c-Up> :resize -1<cr>   " and
+nnoremap <silent> <c-Down> :resize +1<cr> " resizing
+nnoremap <silent> <c-left> :vert resize -1<cr>
+nnoremap <silent> <c-right> :vert resize +1<cr>
+nnoremap <leader>t<leader> :tabnext<cr>   " Next tab
+nnoremap <leader>tm :tabmove              " Move to tab
+nnoremap <leader>tn :tabnew<cr>           " Create a tab
+nnoremap <leader>tc :tabclose<cr>         " Close current tab
+nnoremap <leader>to :tabonly<cr>          " Close all other tabs
 
+nnoremap gd :ALEGoToDefinitionInVSplit<CR>        " Go to def
+nnoremap gr :ALEReferences<CR>                    " Go to ref
+nnoremap <silent> <C-k> <Plug>(ale_previous_wrap) " Go to err
+nnoremap <silent> <C-j> <Plug>(ale_next_wrap)     " Go to prev err
 
-"" ALE
-" Completion, Information
+" ALE
 let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
-let g:ale_completion_delay = 500
+let g:ale_completion_delay = 300 " Complete faster
 let g:ale_set_balloons=1
-" Linting
-let g:ale_linters = {'c': ['clang', 'clangd']}
-" Code Navigation
-nmap gd :ALEGoToDefinitionInVSplit<CR>
-nmap gr :ALEReferences<CR>
-" Jump between errors
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+let g:ale_linters = {
+    \ 'c': ['clang', 'clangd'],
+    \ 'go': ['gofmt']}
+let g:lightline#ale#indicator_checking = "\uf110" " Pretty
+let g:lightline#ale#indicator_infos = "\uf129"    " icons
+let g:lightline#ale#indicator_warnings = "\uf071" " as
+let g:lightline#ale#indicator_errors = "\uf05e"   " ALE
+let g:lightline#ale#indicator_ok = "\uf00c"       " indicators
 
+" NERDTree
+" Don't show brackets in NerdTree
+let g:webdevicons_conceal_nerdtree_brackets = 1 " Conceal [ ] around icons
+let NERDTreeMinimalUI = 1                       " Make UI less friendly
 
-"" gitgutter
-" Next/Previous hunk
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-" Define the hunk status function
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
+" Lightline Functions
+function! LightlineSignify()
+let [added, modified, removed] = sy#repo#get_stats()
+let l:sy = ''
+for [flag, flagcount] in [
+    \   [exists("g:signify_sign_add")?g:signify_sign_add:'+', added],
+    \   [exists("g:signify_sign_delete")?g:signify_sign_delete:'-', removed],
+    \   [exists("g:signify_sign_change")?g:signify_sign_change:'~', modified]
+    \ ]
+    if flagcount> 0
+        let l:sy .= printf('%s%d', flag, flagcount)
+    endif
+endfor
+if !empty(l:sy)
+    let l:sy = printf('[%s]', l:sy)
+    let l:sy_vcs = get(b:sy, 'updated_by', '???')
+    return printf('%s%s', l:sy_vcs, l:sy)
+else
+    return ''
+endif
 endfunction
 
+function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
 
-"" lightline 
-" Our font is too big
-set laststatus=2
-" Useless modes
-set noshowmode
-" Modify the statusline a bit
-" Ensure it's empty
+function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+" Lightline setup
+    "\ 'colorscheme': 'wombat',
+    "\ 'colorscheme': 'one',
+    "\ 'colorscheme': 'solarized',
+    "\ 'colorscheme': 'PaperColor',
 let g:lightline = {}
-" Define ALE warnings/errors/information/status
-let g:lightline.component_expand = {
+let g:lightline = {
+    \ 'colorscheme': 'vibrant-night',
+    \ 'active': {
+    \   'left':  [[ 'mode', 'paste' ],
+    \            [ 'gitbranch', 'gitgutter', 'readonly', 'filename', 'modified' ]],
+    \   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+    \            [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'fileformat', 'fileencoding', 'filetype' ]] },
+    \
+    \ 'component_expand': {
     \  'linter_checking': 'lightline#ale#checking',
     \  'linter_infos': 'lightline#ale#infos',
     \  'linter_warnings': 'lightline#ale#warnings',
     \  'linter_errors': 'lightline#ale#errors',
     \  'linter_ok': 'lightline#ale#ok',
-    \ }
-let g:lightline.component_type = {
+    \ },
+    \ 'component_type': {
     \     'linter_checking': 'right',
     \     'linter_infos': 'right',
     \     'linter_warnings': 'warning',
     \     'linter_errors': 'error',
     \     'linter_ok': 'right',
-    \ }
-" Print the statusline
-let g:lightline = { 
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [[ 'mode', 'paste' ],
-    \            [ 'gitbranch', 'gitgutter', 'readonly', 'filename', 'modified' ]],
-    \   'right': [[ 'lineinfo' ],
-    \             [ 'percent' ],
-    \             [ 'fileformat', 'fileencoding', 'filetype' ],
-    \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]],
     \ },
-    \ 'component_function': { 
-    \ 'gitbranch': 'gitbranch#name', 
-    \ 'gitgutter': 'GitStatus',
+    \ 'component_function': {
+    \ 'gitbranch': 'gitbranch#name',
+    \ 'gitgutter': 'LightlineSignify',
+    \ 'filetype': 'MyFiletype',
+    \ 'fileformat': 'MyFileformat',
     \ },
     \ }
 
-
-" colors
-colorscheme vibrant-night
+" Auto commands - QoL
+" Highlight trailing white spaces
+highlight ExtraWhitespace ctermbg=darkred guibg=#382424
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif

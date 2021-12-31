@@ -1,6 +1,6 @@
 [user]
 	name = Dilyn Corner
-	email = dilyn.corner@k1sslinux.org
+	email = dilyn.corner@tutanota.com
 	signingkey = 42D68EDC
 [credential]
 	helper = cache --timeout=3600
@@ -13,5 +13,5 @@
 	stat = true
 [color]
 	ui = auto
-[merge]
-	verifySignatures = true
+[init]
+	defaultBranch = main

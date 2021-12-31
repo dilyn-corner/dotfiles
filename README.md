@@ -1,8 +1,8 @@
 # dotfiles
 A better $HOME, for you and me.
 
-I previously had a dotfiles repo, but it was junk. This is going to be better! Hopefully. 
-I've already borked my system twice and had to rewrite all of these so it should be _stellar_. 
+I previously had a dotfiles repo, but it was junk. This is going to be better! Hopefully.
+I've already borked my system twice and had to rewrite all of these so it should be _stellar_.
 
 # Making the repo
 
@@ -16,7 +16,7 @@ So easy _I_ can do it!
 
 # Cloning
 
-~~Don't. This is mine.~~ 
+~~Don't. This is mine.~~
 
 ```
 git clone --separate-git-dir=$HOME/git/dotfiles https://github.com/dilyn-corner/dotfiles dotfiles-tmp
