@@ -26,13 +26,12 @@ alias dotties='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
 
 ## Colors
-# paleta
-cat "$HOME/.cache/cp"
+cat "$HOME/.config/vibrant-night"
 
 
 ## SSH Agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 if [ ! "$SSH_AUTH_SOCK" ]; then
     . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null

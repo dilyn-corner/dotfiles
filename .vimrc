@@ -1,5 +1,6 @@
 " Plugins!
 call plug#begin('~/.vim/plugged')
+Plug 'lifepillar/vim-cheat40'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
@@ -13,6 +14,8 @@ call plug#end()
 colorscheme vibrant-night
 
 " Settings for sanity
+set foldmethod=marker
+set foldmarker=<<<,>>>
 set nocp                               " Less vi more improved
 set noswf                              " Clutter be gone
 filetype plugin on                     " Enable filetype detection
@@ -66,20 +69,29 @@ nnoremap <leader>tn :tabnew<cr>           " Create a tab
 nnoremap <leader>tc :tabclose<cr>         " Close current tab
 nnoremap <leader>to :tabonly<cr>          " Close all other tabs
 
-nnoremap gd :ALEGoToDefinitionInVSplit<CR>        " Go to def
-nnoremap gr :ALEReferences<CR>                    " Go to ref
+nnoremap gd :ALEGoToDefinition<CR>                " Go to def
+nnoremap gr :ALEFindReferences<CR>                " Go to ref
 nnoremap <silent> <C-k> <Plug>(ale_previous_wrap) " Go to err
 nnoremap <silent> <C-j> <Plug>(ale_next_wrap)     " Go to prev err
 
+inoremap <silent><export><TAB>
+    \ pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " ALE
+"set completeopt=menu,menuone,preview,noselect,noinsert " test one two
+let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 300 " Complete faster
-let g:ale_set_balloons=1
+let g:ale_set_balloons = 1
+let g:ale_fix_on_save = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
-let g:ale_linters = {
-    \ 'c': ['clang', 'clangd'],
-    \ 'go': ['gofmt']}
+"let g:ale_linters = {
+"    \ 'c': ['clang', 'clangd'],
+"    \ 'go': ['gopls', 'gofmt']}
+"let g:ale_fixers = {
+"    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+"    \ 'go': ['gofmt']}
 let g:lightline#ale#indicator_checking = "\uf110" " Pretty
 let g:lightline#ale#indicator_infos = "\uf129"    " icons
 let g:lightline#ale#indicator_warnings = "\uf071" " as
@@ -160,13 +172,6 @@ let g:lightline = {
     \ }
 
 " Auto commands - QoL
-" Highlight trailing white spaces
-highlight ExtraWhitespace ctermbg=darkred guibg=#382424
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif

@@ -15,3 +15,5 @@
 	ui = auto
 [init]
 	defaultBranch = main
+[core]
+	symlink = true
