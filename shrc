@@ -12,7 +12,6 @@ alias __Y=`echo "\005"` # end = ^e = end of line
 
 
 ## Pretty shell
-#PS1='${PWD} -> '
 PS1='\033[35m\u\033[0m\033[0m \033[36m\w\033[0m \033[35m -> '
 export HISTFILE=$HOME/.ksh_history
 
@@ -20,9 +19,6 @@ export HISTFILE=$HOME/.ksh_history
 ## Aliases!
 alias ls="ls --color"
 alias ix="curl -F 'f:1=<-' ix.io"
-alias github="pash c github.com/dilyn-corner"
-alias email="pash c tutanota.com/dilyn.corner"
-alias dotties='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
 
 
 ## Colors
@@ -34,5 +30,7 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 if [ ! "$SSH_AUTH_SOCK" ]; then
-    . "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
+    . "${XDG_RUNTIME_DIR}/ssh-agent.env" > /dev/null
 fi
+
+export GPG_TTY=$(tty)

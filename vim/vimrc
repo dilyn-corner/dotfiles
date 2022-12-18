@@ -11,6 +11,7 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
+
 colorscheme vibrant-night
 
 " Settings for sanity
@@ -18,7 +19,7 @@ set foldmethod=marker
 set foldmarker=<<<,>>>
 set nocp                               " Less vi more improved
 set noswf                              " Clutter be gone
-filetype plugin on                     " Enable filetype detection
+filetype plugin indent on              " Enable filetype detection
 syntax on                              " Enable syntax highlighting
 set list                               " A list?? what for!
 set listchars=tab:>-                   " Make tabs show themselves
@@ -44,7 +45,6 @@ set siso=5                             " Minimum columns to show left/right
 set nosol                              " Maintain cursor position for commands
 set sb                                 " Windows split down
 set spr                                " Windows split right
-set omnifunc=ale#completion#OmniFunc   " ALE completion
 set laststatus=2                       " Our font is too big for Lightline
 set noshowmode                         " Don't display redundant modes
 
@@ -74,29 +74,37 @@ nnoremap gr :ALEFindReferences<CR>                " Go to ref
 nnoremap <silent> <C-k> <Plug>(ale_previous_wrap) " Go to err
 nnoremap <silent> <C-j> <Plug>(ale_next_wrap)     " Go to prev err
 
-inoremap <silent><export><TAB>
+inoremap <silent><expr><TAB>
     \ pumvisible() ? "\<C-n>" : "\<TAB>"
 
+
 " ALE
-"set completeopt=menu,menuone,preview,noselect,noinsert " test one two
-let g:ale_sign_column_always = 1
+set completeopt=menu,menuone,preview,noselect,noinsert
+"set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_autoimport = 1
 let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
 let g:ale_completion_delay = 300 " Complete faster
 let g:ale_set_balloons = 1
 let g:ale_fix_on_save = 1
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-"let g:ale_linters = {
-"    \ 'c': ['clang', 'clangd'],
-"    \ 'go': ['gopls', 'gofmt']}
-"let g:ale_fixers = {
-"    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-"    \ 'go': ['gofmt']}
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
 let g:lightline#ale#indicator_checking = "\uf110" " Pretty
-let g:lightline#ale#indicator_infos = "\uf129"    " icons
-let g:lightline#ale#indicator_warnings = "\uf071" " as
-let g:lightline#ale#indicator_errors = "\uf05e"   " ALE
+let g:lightline#ale#indicator_warnings = "\uf071" " icons
+let g:lightline#ale#indicator_errors = "\uf05e"   " as
+let g:lightline#ale#indicator_infos = "\uf129"    " ALE
 let g:lightline#ale#indicator_ok = "\uf00c"       " indicators
+let g:ale_sign_warning = ''
+let g:ale_sign_error = '✗'
+let g:ale_linters = {
+    \ 'c': ['clang', 'clangd'],
+    \ 'go': ['gopls', 'gofmt'],
+    \ 'rust': ['rls', 'cargo', 'rustc']}
+let g:ale_fixers = {
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'go': ['gofmt'],
+    \ 'rust': ['rustfmt'],
+    \ 'c': ['clang-format']}
+
 
 " NERDTree
 " Don't show brackets in NerdTree
@@ -134,13 +142,13 @@ function! MyFileformat()
 endfunction
 
 " Lightline setup
-    "\ 'colorscheme': 'wombat',
-    "\ 'colorscheme': 'one',
-    "\ 'colorscheme': 'solarized',
-    "\ 'colorscheme': 'PaperColor',
 let g:lightline = {}
+    "\ 'colorscheme': 'one',
+    "\ 'colorscheme': 'wombat',
+    "\ 'colorscheme': 'solarized',
+    "\ 'colorscheme': 'vibrant-night',
 let g:lightline = {
-    \ 'colorscheme': 'vibrant-night',
+    \ 'colorscheme': 'PaperColor',
     \ 'active': {
     \   'left':  [[ 'mode', 'paste' ],
     \            [ 'gitbranch', 'gitgutter', 'readonly', 'filename', 'modified' ]],
