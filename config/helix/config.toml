@@ -1,0 +1,63 @@
+# theme = "nord"
+theme = "catppuccin_macchiato"
+# vibrant_night is a small mod on nord
+#theme = "vibrant_night"
+
+[editor]
+line-number = "relative"
+mouse = false
+cursorline = true
+color-modes = true
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "underline"
+select = "underline"
+
+[editor.soft-wrap]
+enable = false
+max-wrap = 20
+wrap-at-text-width = true
+
+[editor.lsp]
+display-messages = true
+
+[editor.search]
+smart-case=false
+
+[editor.statusline]
+separator = "|"
+left = [
+  "mode",
+  "spacer",
+  "spinner",
+  "spacer",
+  "version-control",
+  "spacer",
+  "separator",
+  "spacer",
+  "file-name",
+  "file-modification-indicator",
+]
+center = []
+right = [
+  "diagnostics",
+  "spacer",
+  "separator",
+  "spacer",
+  "file-type",
+  "file-encoding",
+  "spacer",
+  "separator",
+  "spacer",
+  "position-percentage",
+  "position",
+]
+
+[keys.normal.Z]
+Z = ":wq!"
+Q = ":q!"
+
+[keys.normal]
+ret = ["move_line_down", "goto_first_nonwhitespace"]
