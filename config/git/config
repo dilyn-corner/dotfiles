@@ -1,11 +1,17 @@
 [user]
     name = Dilyn Corner
     email = dilyn.corner@canonical.com
-    signingkey = 6CC15833EF3198A7
+    signingkey = E8B89D944BF37F70F58493436CC15833EF3198A7
+[init]
+    defaultBranch = main
+[core]
+    symlink = true
+	editor = hx
+	pager = cat
 [credential]
     helper = cache --timeout=3600
 [commit]
-    gpgSign = true
+    gpgsign = true
     verbose = true
 [pull]
     rebase = true
@@ -14,25 +20,31 @@
     autosquash = true
     conflictstyle = diff3
 [color]
-    ui = auto
-    branch = auto
-    diff = auto
-    interactive = auto
+    ui = always
+    diff = always
+    grep = always
     pager = true
-    status = auto
+    status = always
+    branch = always
+    decorate = always
+    interactive = always
 [color "diff"]
+    new = green
+    old = red
     meta = yellow bold
     frag = magenta bold
-    old = red
-    new = green
 [color "status"]
     added = green
     changed = cyan
-    untracked = red
-[init]
-    defaultBranch = main
-[core]
-    symlink = true
+    untracked = red bold
+[color "branch"]
+    local = cyan
+    remote = red
+    current = green
+[merge]
+    conflictstyle = diff3
+[rerere]
+    enabled = 1
 [alias]
     st = status
     re = remote -v
@@ -40,7 +52,5 @@
     bl = blame --color-lines --color-by-age
     adog = log --all --decorate --oneline --graph
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-[merge]
-    conflictstyle = diff3
-[rerere]
-    enabled = 1
+[pager]
+	diff = less -FX
